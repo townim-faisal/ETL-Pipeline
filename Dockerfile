@@ -10,9 +10,9 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 
-COPY .env /usr/src
-COPY sql/* /usr/src
-COPY .env /opt/airflow
+# COPY .env /usr/src/
+# COPY sql/* /usr/src/
+COPY .env /opt/airflow/
 
 USER airflow
 

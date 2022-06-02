@@ -64,6 +64,8 @@ Figure: Target DB diagram (Postgres) [Data warehouse]
 <img src="images/sourcedb.png">
 </p>
 
+N.B. [sourcedb_ingestion_dummy_data.py](sql/sourcedb_ingestion_dummy_data.py) script will help to generate 5000 orders with tables and databases in local MySQL. Similarly, use [target_db_table_with_functions.py](sql/target_db_table_with_functions.py) script for target DB.
+
 ## Environment and Configuration File
 The [.env](.env) file shares the environment variables for [docker-compose.yml](docker-compose.yml) file.
 
@@ -95,7 +97,7 @@ Figure: Metabase Dashboard For Target DB
 You can visit admin dashboard here: http://localhost:9000/admin
 
 
-## Beyond this project:  Data Governance
+## Beyond this project: Data Governance
 
 However, I do not consider data governance in whole project because the scope of this project is simple. Data governance ensures the data is managed in the organization properly with documented rules. We could consider following steps for considering data governance. 
 
