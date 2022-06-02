@@ -1,0 +1,3 @@
+extacted_order_data_file_name: 'storage/extracted_order_data.csv'
+extacted_food_order_data_file_name: 'storage/extracted_food_order_data.csv'
+transformed_data_file_name: 'storage/trasformed_data.json'

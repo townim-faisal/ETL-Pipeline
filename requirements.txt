@@ -1,0 +1,10 @@
+psycopg2-binary
+python-dotenv
+names
+pyyaml
+lxml
+numpy
+pandas
+mysql-connector-python
+pathlib
+apache-airflow>=2.2.3

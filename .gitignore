@@ -1,0 +1,7 @@
+metabase
+mysql
+nginx
+pgadmin
+postgresdb
+airflow/airflow-postgres
+airflow/logs
