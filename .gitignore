@@ -1,6 +1,6 @@
-metabase
-mysql
 nginx
+# metabase
+mysql
 pgadmin
 postgresdb
 airflow/airflow-postgres

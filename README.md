@@ -7,14 +7,6 @@ Or you can build docker image by [VS code docker extention](https://code.visuals
 
 All these below informations are in [.env](.env) file.
 ```
-Links of Airflow: http://localhost:8082/
-username: airflow
-password: airflow
-
-Links of Metabase: http://localhost:9000/ [if the user is not registerd, register yourself]
-email: metabase@mail.com
-password: metabase123
-
 Link of phpMyadmin: http://localhost:8081/
 username: root
 password: root_mysql
@@ -22,6 +14,14 @@ password: root_mysql
 Link of pgAdmin: http://localhost:8090/
 email: test@test.com
 password: test
+
+Links of Airflow: http://localhost:8082/
+username: airflow
+password: airflow
+
+Links of Metabase: http://localhost:9000/ [if the user is not registerd, register yourself]
+email: metabase@mail.com
+password: metabase123
 ```
 
 ## About The Project
