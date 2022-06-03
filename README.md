@@ -76,10 +76,10 @@ The [config.yaml](airflow/dags/ETL/config.yaml) file shares the configuration to
 
 ## DAGs
 
-There are two dags, named `dummy_data_pipeline` and `etl_pipeline`. 
+There are two dags, named `dummy_data_pipeline` and `etl_pipeline` mentioned in [main_workflow.py](airflow/dags/ETL/../main_workflow.py) file. 
 
 - The `dummy_data_pipeline` is scheduled for every 3 minutes to put an order in source DB. It will help us to test our ETL pipeline. The file is in [data_ingestion](airflow/dags/data_ingestion/) folder.
-- The `etl_pipeline` is the ETL pipeline which is scheduled for every 1 hour to do extraction, transformation and loading of data. There is only 3 tasks: [extraction of data from source DB](airflow/dags/ETL/extract.py), [transformation of the extracted data](airflow/dags/ETL/transform.py) amd [loading that transformed data into target DB](airflow/dags/ETL/load.py). I do not use any [XComs](https://airflow.apache.org/docs/apache-airflow/stable/concepts/xcoms) here to cross-comunication of tasks because Xcoms has limitations of memory. So, I put the extracted data in csv and transformed data in json (check the file names in [config.yaml](airflow/dags/ETL/config.yaml)). After completion of all tasks in ETL pipeline, the generated files are removed, so that it does not take any additional memory to store. Also, I use `catchup = False` to start each DAG from latest interval.
+- The `etl_pipeline` is the ETL pipeline which is scheduled for every 1 hour to do extraction, transformation and loading of data. There is only 3 tasks: [extraction of data from source DB](airflow/dags/ETL/extract.py), [transformation of the extracted data](airflow/dags/ETL/transform.py) amd [loading that transformed data into target DB](airflow/dags/ETL/load.py). I do not use any [XComs](https://airflow.apache.org/docs/apache-airflow/stable/concepts/xcoms) here to cross-comunication of tasks because Xcoms has limitations of memory. So, I put the extracted data in csv and transformed data in json (check the file names in [config.yaml](airflow/dags/ETL/config.yaml)). After completion of all tasks in ETL pipeline, the generated files are removed, so that it does not take any additional memory to store. Also, I use `catchup = False` to start each DAG from latest interval. In begining of the service, this DAG is paused as `is_paused_upon_creation=True` in dag, so you need to trigger from dashboard for first time. You can make it `False` to trigger automatically from the begining of creation.
 
 <p align="center">
 Figure: DAGs
