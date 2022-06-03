@@ -48,26 +48,26 @@ Figure: Overall ETL Pipeline
 
 ## Database
 
-After building image in docker-compose, you could manually import the database of source DB and target DB, though the db will initiated through [docker-compose.yml](docker-compose.yml) file.
+After building image in docker-compose, the source and target DB will be initiated through [docker-compose.yml](docker-compose.yml). But, if you want, you could manually import the database of source DB and target DB.
 
-Go to phpMyadmin and import [sourcedb.zip](sql/sourcedb.zip) in `sourcedb` database. 
+>Manual Import DB: Go to phpMyadmin and import [sourcedb.zip](sql/sourcedb.zip) in `sourcedb` database. 
+>Go to pgAdmin and open `Query Tool` for targert database. Then, paste the sql from [targetdb.sql](sql/targetdb.sql) in there and run it. It will create the necessary functions and tables.
 
-Go to pgAdmin and open `Query Tool` for targert database. Then, paste the sql from [targetdb.sql](sql/targetdb.sql) in there and run it. It will create the necessary functions and tables.
+Source DB has 6 tables. `restaurants` table holds the information of restaurants where the customer will order. `users` tables has the information of customer, rider and restaurant owners. `food` table has the information of fodds belong to the restaurants with food type. `orders`, `food_order` and `order_status` have the information of order created by the customer.
 
 <p align="center">
 Figure: Source DB diagram (MySQL)
 <img src="images/sourcedb.png">
 </p>
 
-
-Target DB is following snowflake schema. Here, after addressing the buisness goal, order is the transaction. So, I put order as fact table and other as dimension table.
+Target DB is following snowflake schema because it represents as Data Warehouse. Here, after addressing the buisness goal, order is the transaction. So, I put order as fact table and other as dimension table.
 
 <p align="center">
 Figure: Target DB diagram (Postgres) [Data warehouse]
 <img src="images/sourcedb.png">
 </p>
 
-N.B. [sourcedb_ingestion_dummy_data.py](sql/sourcedb_ingestion_dummy_data.py) script will help to generate 5000 orders with tables and databases in local MySQL. Similarly, use [target_db_table_with_functions.py](sql/target_db_table_with_functions.py) script for target DB. 
+> N.B. Source DB can be more normalized using DB normalization, but the primary focus for this project is on target DB design. [sourcedb_ingestion_dummy_data.py](sql/sourcedb_ingestion_dummy_data.py) script will help to generate dummy 5000 orders with tables and databases in local test MySQL DB. Similarly, use [target_db_table_with_functions.py](sql/target_db_table_with_functions.py) script for your local test Postgres DB. 
 
 ## Environment and Configuration File
 The [.env](.env) file shares the environment variables for [docker-compose.yml](docker-compose.yml) file.
