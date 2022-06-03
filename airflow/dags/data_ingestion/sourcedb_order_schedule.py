@@ -15,10 +15,10 @@ thanas = ['Mirpur', 'Dhanmondi', 'Banani', 'Uttara']
 cities = ['Dhaka']
 
 def get_db():
-    print(os.getenv('SOURCE_DB_PORT'))
+    # print(os.getenv('SOURCE_DB_PORT'))
     return mysql.connector.connect(
         host=os.getenv('DB_HOST'),
-        port=3305,
+        port=os.getenv('SOURCE_DB_PORT'),
         user='root',
         password=os.getenv('SOURCE_DB_ROOT_PASSWORD'),
         database=os.getenv('SOURCE_DB_DATABASE')
@@ -34,6 +34,8 @@ food_values = cursor.fetchall()
 query = "SELECT * FROM users where type='customer';"
 cursor.execute(query)
 customers = cursor.fetchall()
+cursor.close()
+db.close()
 
 
 """
@@ -81,7 +83,7 @@ for f in food_values:
 
 # sys.exit()
 
-total_delay_min = 10
+# total_delay_min = 10
 
 def dummy_order_ingestion():
     db = get_db()
