@@ -64,7 +64,7 @@ Target DB is following snowflake schema because it represents as Data Warehouse.
 
 <p align="center">
 Figure: Target DB diagram (Postgres) [Data warehouse]
-<img src="images/sourcedb.png">
+<img src="images/targetdb.png">
 </p>
 
 > N.B. Source DB can be more normalized using DB normalization, but the primary focus for this project is on target DB design. [sourcedb_ingestion_dummy_data.py](sql/sourcedb_ingestion_dummy_data.py) script will help to generate dummy 5000 orders with tables and databases in local test MySQL DB. Similarly, use [target_db_table_with_functions.py](sql/target_db_table_with_functions.py) script for your local test Postgres DB. 
